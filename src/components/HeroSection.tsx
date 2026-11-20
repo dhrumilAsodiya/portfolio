@@ -173,7 +173,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
                     aria-label={copied ? 'Copied profile line' : 'Copy profile line'}
                     title={copied ? 'Copied!' : 'Copy'}
                     onClick={handleCopy}
-                    className="hw-install-terminal-copy"
+                    className="hw-install-terminal-copy shrink-0"
                   >
                     {copied ? <CheckPixelIcon className="size-4" /> : <CopyIcon className="size-4" />}
                   </button>

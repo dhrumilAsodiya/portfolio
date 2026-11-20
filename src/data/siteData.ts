@@ -1,4 +1,4 @@
-import featureAutomation from '@/src/assets/core/feature-automation.webp';
+import featureFormbuilder from '@/src/assets/core/feature-formbuilder.jpg';
 import featureConnect from '@/src/assets/core/feature-connect.webp';
 import featureDelegate from '@/src/assets/core/feature-delegate.webp';
 import featureMemory from '@/src/assets/core/feature-memory.webp';
@@ -10,12 +10,12 @@ export const PORTFOLIO_PROFILE = {
   lastName: 'Asodiya',
   fullName: 'Dhrumil Asodiya',
   role: 'Full-Stack Software Engineer',
-  location: 'Khambhaliya, Gujarat, India · Remote',
+  location: 'Ahmedabad, Gujarat, India · Remote',
   availability: 'Open for Full-Time Roles & Contract Work',
   email: 'dhrumilasodiya@gmail.com',
-  tagline: 'CS Graduate building scalable full-stack applications, custom OS-themed web experiences, and autonomous AI agents.',
+  tagline: 'CS Graduate building scalable full-stack applications with Java, Spring Boot, Next.js, and PostgreSQL.',
   bioShort:
-    'Building full-stack web applications with Java, Spring Boot, Next.js, and PostgreSQL. Experience with multi-tenant architectures, dynamic form builders, desktop applications, and autonomous AI agents.',
+    'Building full-stack web applications with Java, Spring Boot, Next.js, and PostgreSQL. Experience with enterprise architectures, dynamic form builders, desktop applications, and modern microservices.',
   resumeHref: '/assets/Dhrumil_Resume.pdf',
   githubUrl: 'https://github.com/dhrumilAsodiya',
   xUrl: undefined,
@@ -63,19 +63,19 @@ export const NAV_MENUS: Record<NavTarget, NavSection[]> = {
       category: 'Project Gallery',
       heading: 'Projects',
       items: [
-        { label: 'Multi-Surface Agent', mutedPrefix: '01 ', href: '#projects', description: 'Unified autonomous agent workbench' },
-        { label: 'Skill Graph Engine', mutedPrefix: '02 ', href: '#projects', description: 'Persistent episodic memory engine' },
-        { label: 'Focused Scheduler', mutedPrefix: '03 ', href: '#projects', description: 'Natural-language task daemon' },
-        { label: 'Tasks Multiplied', mutedPrefix: '04 ', href: '#projects', description: 'Zero-context-cost delegation runtime' },
-        { label: 'Multimodal Runner', mutedPrefix: '05 ', href: '#projects', description: 'Vision search & browser automation' },
-        { label: 'Isolated Sandboxing', mutedPrefix: '06 ', href: '#projects', description: 'Docker & Modal execution runner' },
+        { label: 'FormBuilder3', mutedPrefix: '01 ', href: '#project-formbuilder', description: 'Enterprise configuration-driven form builder' },
+        { label: 'Career Compass', mutedPrefix: '02 ', href: '#project-career-compass', description: 'Data-driven career guidance platform' },
+        { label: 'Second Brain Notepad', mutedPrefix: '03 ', href: '#project-second-brain', description: 'Tauri v2 + Rust local-first notes' },
+        { label: 'New CMS', mutedPrefix: '04 ', href: '#project-new-cms', description: 'Modular Spring Boot microservices platform' },
+        { label: 'Finanger', mutedPrefix: '05 ', href: '#project-finanger', description: 'Full-stack personal finance platform' },
+        { label: 'Attendance Management', mutedPrefix: '06 ', href: '#project-attendance', description: 'Student & employee attendance tracker' },
       ],
     },
     {
       category: 'Stack',
       heading: 'Explore',
       items: [
-        { label: 'Core Disciplines', mutedPrefix: 'For ', href: '#disciplines', description: 'Interfaces, AI systems & infra' },
+        { label: 'Core Disciplines', mutedPrefix: 'For ', href: '#disciplines', description: 'Frontend, backend systems & infrastructure' },
         { label: 'Skill Visualization', mutedPrefix: 'For ', href: '#skills', description: 'Capability radar & proficiency bars' },
         { label: 'Career Timeline', mutedPrefix: 'For ', href: '#timeline', description: 'Progression from 2022 to present' },
       ],
@@ -134,11 +134,11 @@ export const WORK_QUICK_JUMP = [
   },
 ];
 
-export type ProjectCategory = 'All' | 'AI Systems' | 'Frontend & UI' | 'Infrastructure';
+export type ProjectCategory = 'All' | 'Enterprise Systems' | 'Frontend & UI' | 'Infrastructure';
 
 export const PROJECT_CATEGORIES: ProjectCategory[] = [
   'All',
-  'AI Systems',
+  'Enterprise Systems',
   'Frontend & UI',
   'Infrastructure',
 ];
@@ -166,10 +166,10 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'formbuilder',
     index: '01',
-    category: 'AI Systems',
+    category: 'Enterprise Systems',
     year: '2026',
     role: 'Lead Full-Stack Engineer',
-    kicker: '#1 AI Systems · Spring Boot 3 / PostgreSQL',
+    kicker: '#1 Enterprise Systems · Spring Boot 3 / PostgreSQL',
     title: 'FormBuilder3',
     description:
       'Enterprise-grade, configuration-driven form builder built as a GTU final-year project and internship deliverable. Eliminates custom development work for every new data-capture form.',
@@ -180,17 +180,17 @@ export const PROJECTS: ProjectItem[] = [
     metricLabel: 'API Endpoints',
     metricValue: '50+',
     stack: ['Spring Boot 3', 'Java 21', 'Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
-    image: featureAutomation,
+    image: featureFormbuilder,
     artClass: 'landing-feature-art--feature-automation',
     repoUrl: 'https://github.com/dhrumilAsodiya/Formbuilder3',
   },
   {
     id: 'career-compass',
     index: '02',
-    category: 'AI Systems',
+    category: 'Enterprise Systems',
     year: '2026',
     role: 'Full-Stack Engineer',
-    kicker: '#2 AI Systems · Spring Boot / Java',
+    kicker: '#2 Enterprise Systems · Spring Boot / Java',
     title: 'Career Compass',
     description:
       'Career guidance system built with Spring Boot, helping students and professionals navigate career paths with data-driven recommendations.',
@@ -224,7 +224,7 @@ export const PROJECTS: ProjectItem[] = [
     stack: ['Tauri v2', 'Rust', 'React 19', 'TypeScript', 'Vite', 'SQLite'],
     image: featureSandbox,
     artClass: 'landing-feature-art--feature-sandbox',
-    repoUrl: 'https://github.com/ranucledev-dhrumil/second_brain_notepad',
+    repoUrl: 'https://github.com/dhrumilAsodiya/second_brain_notepad',
   },
   {
     id: 'new-cms',
@@ -245,7 +245,7 @@ export const PROJECTS: ProjectItem[] = [
     stack: ['Spring Boot', 'Java', 'Docker', 'PostgreSQL', 'Microservices'],
     image: featureDelegate,
     artClass: 'landing-feature-art--feature-delegate',
-    repoUrl: 'https://github.com/reddevil6402-ship-it/new_cms',
+    repoUrl: 'https://github.com/dhrumilAsodiya/new_cms',
   },
   {
     id: 'finanger',
@@ -292,12 +292,12 @@ export const PROJECTS: ProjectItem[] = [
 ];
 
 /* Skill Visualization Data */
-export type SkillDomain = 'All' | 'Frontend & UI' | 'AI & Agents' | 'Backend & Infra';
+export type SkillDomain = 'All' | 'Frontend & UI' | 'AI-Assisted Dev' | 'Backend & Infra';
 
 export const SKILL_DOMAINS: SkillDomain[] = [
   'All',
   'Frontend & UI',
-  'AI & Agents',
+  'AI-Assisted Dev',
   'Backend & Infra',
 ];
 
@@ -326,7 +326,7 @@ export const RADAR_AXES: RadarAxis[] = [
     label: 'Next.js & React',
     shortLabel: 'Frontend',
     level: 88,
-    years: '2 yrs',
+    years: '1 yr',
     domain: 'Frontend & UI',
     summary: 'Next.js App Router, React 19, TypeScript, Tailwind CSS, Shadcn UI, responsive design.',
   },
@@ -354,7 +354,7 @@ export const RADAR_AXES: RadarAxis[] = [
     shortLabel: 'AI Tools',
     level: 78,
     years: '1 yr',
-    domain: 'AI & Agents',
+    domain: 'AI-Assisted Dev',
     summary: 'Claude Code, Gemini, Antigravity, structured prompting workflows.',
   },
   {
@@ -362,7 +362,7 @@ export const RADAR_AXES: RadarAxis[] = [
     label: 'DevOps & Tools',
     shortLabel: 'DevOps',
     level: 75,
-    years: '2 yrs',
+    years: '1 yrs',
     domain: 'Backend & Infra',
     summary: 'Git, GitHub, Docker, Vercel, VS Code, IntelliJ IDEA.',
   },
@@ -428,7 +428,7 @@ export const SKILLS_MATRIX: SkillMatrixItem[] = [
   {
     id: 'ai-assisted-dev',
     name: 'AI-Assisted Development',
-    domain: 'AI & Agents',
+    domain: 'AI-Assisted Dev',
     axisId: 'ai-workflows',
     proficiency: 78,
     years: '1 yr',
@@ -556,7 +556,7 @@ export const FAQS: FaqItem[] = [
     id: 'who',
     question: 'Who are you and what do you build?',
     answer:
-      'I am Dhrumil Asodiya, a Computer Science Engineering graduate from Gujarat Technological University and a Full-Stack Software Engineer. I build scalable full-stack applications using Java, Spring Boot, Next.js, and PostgreSQL, with experience in multi-tenant architectures, dynamic form builders, desktop applications, and autonomous AI agents.',
+      'I am Dhrumil Asodiya, a Computer Science Engineering graduate from Gujarat Technological University and a Full-Stack Software Engineer. I build scalable full-stack applications using Java, Spring Boot, Next.js, and PostgreSQL, with experience in enterprise architectures, dynamic form builders, desktop applications, and modern microservices.',
   },
   {
     id: 'stack',
@@ -600,12 +600,12 @@ export const FOOTER_COLUMNS = [
     category: 'Work',
     title: 'Projects',
     links: [
-      { label: 'FormBuilder3', href: '#projects' },
-      { label: 'Career Compass', href: '#projects' },
-      { label: 'Second Brain Notepad', href: '#projects' },
-      { label: 'New CMS', href: '#projects' },
-      { label: 'Finanger', href: '#projects' },
-      { label: 'Attendance Management System', href: '#projects' },
+      { label: 'FormBuilder3', href: '#project-formbuilder' },
+      { label: 'Career Compass', href: '#project-career-compass' },
+      { label: 'Second Brain Notepad', href: '#project-second-brain' },
+      { label: 'New CMS', href: '#project-new-cms' },
+      { label: 'Finanger', href: '#project-finanger' },
+      { label: 'Attendance Management System', href: '#project-attendance' },
     ],
   },
   {

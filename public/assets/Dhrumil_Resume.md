@@ -1,6 +1,6 @@
 # Dhrumil Asodiya
 
-Khambhaliya, Gujarat, India | 6354295616 | dhrumilasodiya@gmail.com  
+Ahmedabad, Gujarat, India | 6354295616 | dhrumilasodiya@gmail.com  
 [LinkedIn](https://www.linkedin.com/in/dhrumil-asodiya-cs2026) | [GitHub](https://github.com/dhrumilAsodiya)
 
 ## Career Objective

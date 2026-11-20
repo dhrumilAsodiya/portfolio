@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { ChatWidget } from './components/ChatWidget';
 import { ContactModal } from './components/ContactModal';
 import { DownloadsSection } from './components/DownloadsSection';
 import { FaqSection } from './components/FaqSection';
@@ -281,6 +282,9 @@ export default function App() {
             initialTopic={contactTopic}
             onClose={() => setContactOpen(false)}
           />
+
+          {/* Chat Widget (floating bubble, bottom-right) */}
+          <ChatWidget />
 
           {/* 5px fixed viewport frame */}
           <div aria-hidden="true" className="hw-frame" />

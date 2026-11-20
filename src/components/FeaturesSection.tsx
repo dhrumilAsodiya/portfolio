@@ -30,6 +30,9 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
 
   useEffect(() => {
     if (!activeProject) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setActiveProject(null);
@@ -47,7 +50,10 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
       }
     };
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [activeProject, visibleProjects]);
 
   const stepProject = (dir: 1 | -1) => {
@@ -335,15 +341,18 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
           role="dialog"
           aria-modal="true"
           aria-label={`${activeProject.title} project details`}
-          className="fixed inset-0 z-[220] flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs"
+          data-lenis-prevent
+          className="fixed inset-0 z-[220] flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs overscroll-contain"
           onClick={() => setActiveProject(null)}
+          onWheel={(e) => e.stopPropagation()}
         >
           <div
-            className="grid max-h-[90vh] w-full max-w-4xl grid-cols-1 overflow-y-auto border border-[var(--hpv2-hairline)] bg-[var(--core-paper)] text-[var(--hw-teams-ink)] shadow-2xl md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]"
+            className="flex flex-col md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] max-h-[90vh] w-full max-w-4xl overflow-hidden border border-[var(--hpv2-hairline)] bg-[var(--core-paper)] text-[var(--hw-teams-ink)] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => e.stopPropagation()}
           >
-            {/* Left Media Pane */}
-            <figure className="hw-teams-plate bg-core relative min-h-[260px] overflow-hidden md:min-h-[460px]">
+            {/* Left Media Pane - Pinned */}
+            <figure className="hw-teams-plate bg-core relative min-h-[220px] md:h-full md:min-h-0 overflow-hidden shrink-0">
               <div className="hw-noise absolute inset-0">
                 <img
                   src={activeProject.image}
@@ -370,36 +379,42 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
               </figcaption>
             </figure>
 
-            {/* Right Case Study Pane */}
-            <div className="flex flex-col justify-between gap-6 p-6 md:p-8">
-              <div className="flex flex-col gap-4">
-                <div className="flex items-start justify-between gap-4 border-b border-dotted border-[var(--hpv2-hairline)] pb-4">
-                  <div>
-                    <p className="font-[family-name:var(--hpv2-font-meta)] text-[11px] tabular-nums uppercase opacity-70">
-                      {activeProject.category} · {activeProject.year} · {activeProject.role}
-                    </p>
-                    <h3
-                      className="mt-1 text-[var(--hw-teams-ink)]"
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '36px',
-                        fontWeight: 500,
-                        lineHeight: 0.98,
-                      }}
-                    >
-                      {activeProject.title}
-                    </h3>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setActiveProject(null)}
-                    aria-label="Close project lightbox"
-                    className="grid size-9 shrink-0 cursor-pointer place-items-center font-[family-name:var(--font-mono)] text-sm hover:bg-[var(--hpv2-row-hover)]"
+            {/* Right Case Study Pane - With Scoped Scroll */}
+            <div className="flex flex-1 flex-col justify-between overflow-hidden p-6 md:p-8">
+              {/* Pinned Case Study Header */}
+              <div className="flex items-start justify-between gap-4 border-b border-dotted border-[var(--hpv2-hairline)] pb-4 shrink-0">
+                <div>
+                  <p className="font-[family-name:var(--hpv2-font-meta)] text-[11px] tabular-nums uppercase opacity-70">
+                    {activeProject.category} · {activeProject.year} · {activeProject.role}
+                  </p>
+                  <h3
+                    className="mt-1 text-[var(--hw-teams-ink)]"
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '36px',
+                      fontWeight: 500,
+                      lineHeight: 0.98,
+                    }}
                   >
-                    ✕
-                  </button>
+                    {activeProject.title}
+                  </h3>
                 </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(null)}
+                  aria-label="Close project lightbox"
+                  className="grid size-9 shrink-0 cursor-pointer place-items-center font-[family-name:var(--font-mono)] text-sm hover:bg-[var(--hpv2-row-hover)]"
+                >
+                  ✕
+                </button>
+              </div>
 
+              {/* Scoped Scrollable Narrative Body */}
+              <div
+                data-lenis-prevent
+                onWheel={(e) => e.stopPropagation()}
+                className="flex-1 min-h-0 overflow-y-auto overscroll-contain py-4 pr-1.5 space-y-4"
+              >
                 <p className="text-[15px] leading-relaxed">{activeProject.description}</p>
 
                 <div className="space-y-3 border-t border-dotted border-[var(--hpv2-hairline)] pt-4 text-sm leading-relaxed">
@@ -426,8 +441,8 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
                 </div>
               </div>
 
-              {/* Footer Controls */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-dotted border-[var(--hpv2-hairline)] pt-4">
+              {/* Pinned Footer Controls */}
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-dotted border-[var(--hpv2-hairline)] pt-4 shrink-0">
                 <div className="flex items-center gap-2">
                   <button
                     type="button"

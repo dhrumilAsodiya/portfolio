@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import desktopPreviewWebp from '@/src/assets/core/desktop-preview.webp';
 import desktopSvg from '@/src/assets/core/desktop.svg';
 import platformArtWebp from '@/src/assets/core/platform-art.webp';
 
 export function DownloadsSection() {
   const [previewZoomOpen, setPreviewZoomOpen] = useState(false);
+
+  useEffect(() => {
+    if (!previewZoomOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setPreviewZoomOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [previewZoomOpen]);
 
   return (
     <section aria-label="Featured Workbench and Core Disciplines" className="landing-downloads text-[var(--hw-fg)]" id="disciplines">
@@ -51,7 +66,7 @@ export function DownloadsSection() {
               lineHeight: 1.6,
             }}
           >
-            End-to-end engineering across UI, autonomous agents, and runtime infra.
+            End-to-end full-stack engineering across responsive UI, enterprise backend services, and scalable infrastructure.
           </p>
         </div>
 
@@ -103,7 +118,7 @@ export function DownloadsSection() {
                   textTransform: 'uppercase',
                 }}
               >
-                02 · Agents &amp; Tooling
+                02 · Backend &amp; Systems
               </p>
               <h3
                 style={{
@@ -113,7 +128,7 @@ export function DownloadsSection() {
                   lineHeight: 1.1,
                 }}
               >
-                AI Systems
+                Enterprise APIs
               </h3>
               <div className="flex max-w-full flex-col items-center gap-3">
                 <a
@@ -122,7 +137,7 @@ export function DownloadsSection() {
                   data-variant="secondary"
                   className="core-button landing-cta group relative inline-flex cursor-pointer items-center justify-center rounded-none border-0 bg-clip-padding outline-none select-none font-[family-name:var(--font-mono)] tracking-[0.1em] uppercase transition-[background-color,box-shadow,color,transform] duration-150 ease-out active:scale-[0.98] bg-[color-mix(in_srgb,var(--core-paper)_90%,transparent)] text-[var(--hpv2-brand,var(--core-primary))] hover:bg-[var(--core-paper)] hover:shadow-[var(--hpv2-shadow-lift)] gap-2 px-3 py-2.5 text-xs"
                 >
-                  <span className="leading-none whitespace-nowrap">View Agent Architecture</span>
+                  <span className="leading-none whitespace-nowrap">View Backend Architecture</span>
                   <span aria-hidden="true" className="core-button-hover-border" />
                 </a>
                 <p
@@ -137,7 +152,7 @@ export function DownloadsSection() {
                     className="px-2 py-1 underline decoration-current/65 underline-offset-[0.2em] hover:decoration-current"
                     href="#projects"
                   >
-                    Memory &amp; skill synthesis
+                    Spring Boot &amp; Microservices
                   </a>
                   <a
                     className="px-2 py-1 underline decoration-current/65 underline-offset-[0.2em] hover:decoration-current"
@@ -161,7 +176,7 @@ export function DownloadsSection() {
                   textTransform: 'uppercase',
                 }}
               >
-                03 · Runtimes &amp; CLI
+                03 · DevOps &amp; Cloud
               </p>
               <h3
                 style={{
@@ -179,7 +194,7 @@ export function DownloadsSection() {
                 data-variant="secondary"
                 className="core-button landing-cta group relative inline-flex cursor-pointer items-center justify-center rounded-none border-0 bg-clip-padding outline-none select-none font-[family-name:var(--font-mono)] tracking-[0.1em] uppercase transition-[background-color,box-shadow,color,transform] duration-150 ease-out active:scale-[0.98] bg-[color-mix(in_srgb,var(--core-paper)_90%,transparent)] text-[var(--hpv2-brand,var(--core-primary))] hover:bg-[var(--core-paper)] hover:shadow-[var(--hpv2-shadow-lift)] gap-2 px-3 py-2.5 text-xs"
               >
-                <span className="leading-none whitespace-nowrap">Inspect Runtime Work</span>
+                <span className="leading-none whitespace-nowrap">Inspect Cloud &amp; Infra</span>
                 <span aria-hidden="true" className="core-button-hover-border" />
               </a>
             </div>
@@ -193,12 +208,15 @@ export function DownloadsSection() {
           role="dialog"
           aria-modal="true"
           aria-label="Featured Workbench Preview"
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          data-lenis-prevent
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm overscroll-contain"
           onClick={() => setPreviewZoomOpen(false)}
+          onWheel={(e) => e.stopPropagation()}
         >
           <div
             className="relative max-h-[90vh] w-full max-w-6xl border border-white/20 bg-[var(--core-primary)] p-2 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => e.stopPropagation()}
           >
             <button
               type="button"
@@ -210,7 +228,7 @@ export function DownloadsSection() {
             </button>
             <img
               src={desktopPreviewWebp}
-              alt="Featured AI Agent Workbench preview expanded"
+              alt="Featured Full-Stack Developer Workbench preview expanded"
               className="max-h-[85vh] w-full object-contain"
             />
           </div>
