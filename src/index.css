@@ -644,6 +644,8 @@ html[data-marketing-theme="dark"] ::-webkit-scrollbar-thumb:hover,
   min-width: 0;
   display: flex;
   gap: clamp(14px, 2.2vh, 20px);
+  width: 100%;
+  max-width: 100%;
 }
 
 .landing-hero-actions {
@@ -728,10 +730,11 @@ html[data-marketing-theme="dark"] .landing-hero-art {
 
 /* Install Terminal */
 .hw-install-terminal {
-  width: 450px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 450px;
   scroll-margin-top: var(--hw-install-scroll-margin);
   padding-top: 10px;
+  box-sizing: border-box;
 }
 
 .hw-install-terminal-label,
@@ -753,12 +756,16 @@ html[data-marketing-theme="dark"] .landing-hero-art {
   text-transform: none;
   border-radius: 6px;
   padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hw-install-terminal-tabs {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2px;
   display: grid;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hw-install-terminal-tab {
@@ -792,6 +799,7 @@ html[data-marketing-theme="dark"] .landing-hero-art {
 .hw-install-terminal-tab[data-state="active"] {
   background: var(--core-color-blue);
   text-decoration: none;
+  color: var(--core-white);
 }
 
 .hw-install-terminal-tab[data-state="active"] > span {
@@ -803,15 +811,19 @@ html[data-marketing-theme="dark"] .landing-hero-art {
   gap: 8px;
   padding: 8px 12px;
   display: flex;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hw-install-terminal-panel > code {
   white-space: normal;
   word-break: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
   font: inherit;
   flex: 1;
   line-height: 1.45;
+  color: var(--core-white);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

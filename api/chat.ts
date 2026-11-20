@@ -10,7 +10,7 @@
  * Deployed on Vercel as a serverless function at /api/chat.
  */
 
-import { buildSystemPrompt, FALLBACK_MESSAGE, BLOCKED_PHRASES, MAX_MESSAGE_LENGTH } from '../src/data/chatKnowledgeServer.ts';
+import { buildSystemPrompt, FALLBACK_MESSAGE, BLOCKED_PHRASES } from '../src/data/chatKnowledgeServer.ts';
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-20b';
@@ -83,29 +83,19 @@ export async function POST(req: Request): Promise<Response> {
   log(`POST /api/chat origin=${origin} len=${msgLen}`);
 
   // --- Origin validation (production only) ---
-  const isDev = process.env.NODE_ENV !== 'production';
-  if (!isDev && origin) {
-    const allowedOrigin = process.env.ALLOWED_ORIGIN;
-    if (allowedOrigin && origin !== allowedOrigin) {
-      log(`reject reason=origin_mismatch origin=${origin} dur=${Date.now() - start}ms`);
-      return json({ error: 'Forbidden: invalid origin' }, 403);
+  const allowedOrigin = process.env.ALLOWED_ORIGIN;
+  if (allowedOrigin) {
+    const originHeader = req.headers.get('origin') || (req.headers as unknown as Record<string, string>)?.origin;
+    if (!originHeader || originHeader !== allowedOrigin) {
+      log(`reject reason=origin_forbidden origin=${originHeader} dur=${Date.now() - start}ms`);
+      return json({ error: 'Forbidden' }, 403);
     }
   }
 
-  // --- Guardrail: message presence ---
-  if (!message || typeof message !== 'string' || message.trim().length === 0) {
-    log(`reject reason=empty_message dur=${Date.now() - start}ms`);
-    return json({ error: 'Message is required' }, 400);
-  }
-
-  // --- Guardrail: message length ---
-  if (message.length > MAX_MESSAGE_LENGTH) {
-    log(`reject reason=message_too_long len=${message.length} dur=${Date.now() - start}ms`);
-    return json({
-      content:
-        'Your message is a bit too long. Please keep your inquiries concise so I can assist you better!',
-      cached: false,
-    });
+  // --- Guardrail: message validation (1 to 500 characters) ---
+  if (typeof message !== 'string' || message.trim().length === 0 || message.length > 500) {
+    log(`reject reason=invalid_message len=${msgLen} dur=${Date.now() - start}ms`);
+    return json({ error: 'Message must be between 1 and 500 characters.' }, 400);
   }
 
   // --- Guardrail: blocked phrases (prompt injection) ---

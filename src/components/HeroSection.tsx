@@ -131,7 +131,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
               </button>
             </div>
 
-            {/* Interactive CLI Profile Widget (Clean solo label above terminal) */}
+            {/* Interactive CLI Profile Widget */}
             <div className="hw-install-terminal" id="profile-cli">
               <p className="hw-install-terminal-label" id="profile-terminal-label">
                 Quick profile
