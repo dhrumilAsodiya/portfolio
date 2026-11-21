@@ -19,10 +19,10 @@ CS Graduate building scalable full-stack applications, enterprise architectures,
 
 | Project | Description | Stack | Repo |
 |---------|-------------|-------|------|
-| FormBuilder3 | Enterprise dynamic form builder with auto table generation, rule engine, workflow approvals, RBAC | Spring Boot 3, Java 21, Next.js, PostgreSQL | [GitHub](https://github.com/dhrumilAsodiya/Formbuilder3) |
-| Career Compass | Career guidance system | Spring Boot, Java, Docker | [GitHub](https://github.com/dhrumilAsodiya/Career-Compass_Final) |
+| FormBuilder3 | Enterprise dynamic form builder with auto table generation, rule engine, workflow approvals, RBAC | Spring Boot 3, Java 21, Next.js, PostgreSQL | [GitHub](https://github.com/dhrumilAsodiya/FormBuilder) |
+| Career Compass | Career guidance system | Spring Boot, Java, Docker | [GitHub](https://github.com/dhrumilAsodiya/Career-Compass) |
 | Second Brain Notepad | Tauri desktop app with SQLite, global hotkeys, browser extension | Tauri v2, Rust, React, SQLite | [GitHub](https://github.com/dhrumilAsodiya/second_brain_notepad) |
-| New CMS | Modular CMS microservices platform | Spring Boot microservices, Docker | [GitHub](https://github.com/dhrumilAsodiya/new_cms) |
+| Modular CMS Platform| Modular CMS microservices platform | Spring Boot microservices, Docker | [GitHub](https://github.com/dhrumilAsodiya/modular-cms-platform) |
 | Finanger | Personal finance management platform (live on Vercel) | Spring Boot, Next.js, PostgreSQL | [GitHub](https://github.com/dhrumilAsodiya/finanger) |
 | Attendance Management System | Java-based attendance tracking | Java | [GitHub](https://github.com/dhrumilAsodiya/AttendanceManagementSystem) |
 

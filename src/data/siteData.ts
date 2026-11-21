@@ -182,7 +182,7 @@ export const PROJECTS: ProjectItem[] = [
     stack: ['Spring Boot 3', 'Java 21', 'Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
     image: featureFormbuilder,
     artClass: 'landing-feature-art--feature-automation',
-    repoUrl: 'https://github.com/dhrumilAsodiya/Formbuilder3',
+    repoUrl: 'https://github.com/dhrumilAsodiya/FormBuilder',
   },
   {
     id: 'career-compass',
@@ -203,7 +203,7 @@ export const PROJECTS: ProjectItem[] = [
     stack: ['Spring Boot', 'Java', 'Docker', 'Maven'],
     image: featureMemory,
     artClass: 'landing-feature-art--feature-memory',
-    repoUrl: 'https://github.com/dhrumilAsodiya/Career-Compass_Final',
+    repoUrl: 'https://github.com/dhrumilAsodiya/Career-Compass',
   },
   {
     id: 'second-brain',
@@ -245,7 +245,7 @@ export const PROJECTS: ProjectItem[] = [
     stack: ['Spring Boot', 'Java', 'Docker', 'PostgreSQL', 'Microservices'],
     image: featureDelegate,
     artClass: 'landing-feature-art--feature-delegate',
-    repoUrl: 'https://github.com/dhrumilAsodiya/new_cms',
+    repoUrl: 'https://github.com/dhrumilAsodiya/modular-cms-platform',
   },
   {
     id: 'finanger',

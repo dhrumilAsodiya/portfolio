@@ -89,7 +89,7 @@ export const PROJECTS = [
     stack: ['Spring Boot 3', 'Java 21', 'Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
     outcome:
       'Reduced per-form development effort from days to minutes; 16 database entities, 50+ API endpoints, 100+ backend classes, production-ready with security audit and testing guides.',
-    repoUrl: 'https://github.com/dhrumilAsodiya/Formbuilder3',
+    repoUrl: 'https://github.com/dhrumilAsodiya/FormBuilder',
   },
   {
     id: 'career-compass',
@@ -103,7 +103,7 @@ export const PROJECTS = [
     stack: ['Spring Boot', 'Java', 'Docker', 'Maven'],
     outcome:
       'Delivered a production-ready career guidance platform with clean architecture and deployment-ready Docker configuration.',
-    repoUrl: 'https://github.com/dhrumilAsodiya/Career-Compass_Final',
+    repoUrl: 'https://github.com/dhrumilAsodiya/Career-Compass',
   },
   {
     id: 'second-brain',
@@ -131,7 +131,7 @@ export const PROJECTS = [
     stack: ['Spring Boot', 'Java', 'Docker', 'PostgreSQL', 'Microservices'],
     outcome:
       'Designed a complete multi-service CMS architecture with 11+ services, CI/CD scripts, database structure documentation, and service startup/shutdown automation.',
-    repoUrl: 'https://github.com/dhrumilAsodiya/new_cms',
+    repoUrl: 'https://github.com/dhrumilAsodiya/modular-cms-platform',
   },
   {
     id: 'finanger',
