@@ -43,7 +43,7 @@ Self-driven and enthusiastic Computer Science Engineering graduate with hands-on
 - Features SQLite persistence, global hotkey capture, browser extension integration, and vault-based note organization.
 - 22 of 28 implementation steps complete including continuous autosave, session restore, vault search/filter, and portable Windows distribution.
 
-### New CMS — Modular Microservices Platform
+### Modular CMS Platform — Modular Microservices Platform
 - Architected a CMS platform as a suite of Spring Boot microservices: gateway, content, media, IAM, workflow, schema, search, audit, form, and notification services.
 - Docker Compose orchestration with phased implementation plan across three phases.
 - 11+ services designed with database-per-service pattern and CI/CD automation.

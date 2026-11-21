@@ -64,7 +64,7 @@ export const SKILLS = [
     proficiency: 78,
     years: '1 yr',
     focus: 'Claude Code, Gemini, Antigravity',
-    project: 'New CMS',
+    project: 'Modular CMS Platform',
   },
   {
     name: 'DevOps & Tools',
@@ -120,12 +120,12 @@ export const PROJECTS = [
     repoUrl: 'https://github.com/dhrumilAsodiya/second_brain_notepad',
   },
   {
-    id: 'new-cms',
+    id: 'modular-cms-platform',
     index: '04',
     category: 'Infrastructure',
     year: '2026',
     role: 'Platform Architect',
-    title: 'New CMS',
+    title: 'Modular CMS Platform',
     description:
       'Modular CMS platform architected as a suite of Spring Boot microservices — gateway, content, media, IAM, workflow, schema, search, audit, form, and notification services.',
     stack: ['Spring Boot', 'Java', 'Docker', 'PostgreSQL', 'Microservices'],
