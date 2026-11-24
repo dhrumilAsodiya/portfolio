@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+}
+
+.crowd-wordmark {
+  font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
+}
+
+/* Marko Denic interactive hanging spider & cobweb system */
+.spider-theme-light {
+  --hw-page-bg: oklch(98.5% 0.008 75);
+  --hw-page-surface: oklch(96.5% 0.014 70);
+  --hw-page-border: oklch(88% 0.015 70);
+  --hw-page-fg: oklch(18% 0.015 262);
+  --hw-page-muted: oklch(46% 0.015 262);
+  --hw-accent: oklch(60% 0.19 45);
+  --hw-silk: oklch(45% 0.01 262 / 0.45);
+  --hw-thread: oklch(45% 0.01 262 / 0.6);
+  --hw-body: oklch(20% 0.01 262);
+  --hw-rim: oklch(20% 0.01 262);
+  --hw-leg: oklch(20% 0.01 262);
+  --hw-eye: oklch(68% 0.21 35);
+}
+
+.spider-theme-dark {
+  --hw-page-bg: oklch(13% 0.025 300);
+  --hw-page-surface: oklch(17% 0.03 300);
+  --hw-page-border: oklch(26% 0.035 300);
+  --hw-page-fg: oklch(95% 0.008 300);
+  --hw-page-muted: oklch(68% 0.02 300);
+  --hw-accent: oklch(72% 0.18 55);
+  --hw-silk: oklch(85% 0.01 262 / 0.35);
+  --hw-thread: oklch(85% 0.01 262 / 0.5);
+  --hw-body: oklch(17% 0.01 262);
+  --hw-rim: oklch(55% 0.01 262);
+  --hw-leg: oklch(55% 0.01 262);
+  --hw-eye: oklch(68% 0.21 35);
+}
+
+.hw-web {
+  position: fixed;
+  z-index: 40;
+  width: var(--hw-size);
+  height: var(--hw-size);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hw-web--main {
+  --hw-size: 280px;
+  top: 0;
+  right: 0;
+}
+
+.hw-web--small {
+  --hw-size: 150px;
+  opacity: 0.6;
+  bottom: 0;
+  left: 0;
+  rotate: 180deg;
+}
+
+.hw-web path {
+  fill: none;
+  stroke: var(--hw-silk);
+  stroke-width: 0.45px;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1px;
+  animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards hw-draw;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes hw-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hw-rig {
+  position: fixed;
+  top: 0;
+  right: max(16px, 50vw - 689px);
+  z-index: 50;
+  width: 88px;
+  transform-origin: 50% 0;
+  pointer-events: none;
+  animation: 3.2s ease-in-out infinite alternate hw-sway;
+}
+
+@keyframes hw-sway {
+  0% {
+    rotate: -2.5deg;
+  }
+  to {
+    rotate: 2.5deg;
+  }
+}
+
+.hw-thread {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--hw-thread);
+}
+
+.hw-spider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 88px;
+  height: 88px;
+  pointer-events: auto;
+  cursor: pointer;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.hw-spider:focus-visible {
+  outline: 2px solid var(--hw-eye);
+  outline-offset: 2px;
+  border-radius: 9999px;
+}
+
+.hw-spider .body {
+  fill: var(--hw-body);
+  stroke: var(--hw-rim);
+  stroke-width: 1px;
+}
+
+.hw-spider .legs path {
+  fill: none;
+  stroke: var(--hw-leg);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hw-spider .eye {
+  fill: var(--hw-eye);
+}
+
+.hw-spider .legs g {
+  transform-box: view-box;
+  transform-origin: 32px 36px;
+}
+
+.hw-rig.is-moving .legs g:first-child {
+  animation: 0.18s ease-in-out infinite alternate hw-crawl;
+}
+
+.hw-rig.is-moving .legs g:last-child {
+  animation: 0.18s ease-in-out infinite alternate-reverse hw-crawl;
+}
+
+@keyframes hw-crawl {
+  0% {
+    rotate: -7deg;
+  }
+  to {
+    rotate: 7deg;
+  }
+}
+
+.hw-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  z-index: 70;
+  translate: -50%;
+  color: oklch(97% 0 0);
+  background: oklch(18% 0.01 262);
+  border: 1px solid oklch(30% 0.02 262);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  box-shadow: 0 12px 36px rgb(0 0 0 / 0.35);
+  animation: 3s cubic-bezier(0.22, 1, 0.36, 1) forwards hw-toast;
+}
+
+@keyframes hw-toast {
+  0% {
+    opacity: 0;
+    translate: -50% 12px;
+  }
+  10%,
+  85% {
+    opacity: 1;
+    translate: -50% 0;
+  }
+  to {
+    opacity: 0;
+    translate: -50% 0;
+  }
+}
+
+@media (width <= 767px) {
+  .hw-web--main {
+    --hw-size: 140px;
+  }
+  .hw-web--small {
+    --hw-size: 90px;
+  }
+  .hw-rig {
+    right: 6px;
+    scale: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-web path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .hw-rig {
+    animation: none;
+  }
+}

@@ -1728,5 +1728,236 @@ html::view-transition-new(theme-scanline) {
   transform: rotateY(180deg);
 }
 
+/* ─── Bottom-Left Spider Fold (Easter Egg Toggle) ─── */
+.marketing-spider-fold {
+  bottom: var(--hw-frame, 5px);
+  left: var(--hw-frame, 5px);
+  z-index: 95;
+  opacity: 1;
+  width: 32px;
+  height: 32px;
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  position: fixed;
+  cursor: pointer;
+}
+
+.marketing-spider-fold svg {
+  pointer-events: none;
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s, color 0.2s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.marketing-spider-fold-front {
+  color: color-mix(in srgb, var(--core-layer-light) 5%, var(--core-blue-dark-90));
+}
+
+.marketing-spider-fold-back {
+  opacity: 0.1;
+  color: color-mix(in srgb, var(--core-layer-light) 5%, var(--core-blue-dark-90));
+  transform: rotate(180deg);
+}
+
+.marketing-spider-fold:hover .marketing-spider-fold-front {
+  transform-origin: 0% 100%;
+  transform: scale(1.15);
+}
+
+html[data-marketing-theme="dark"] .marketing-spider-fold svg {
+  color: var(--marketing-dark-white);
+}
+
+html[data-marketing-theme="dark"] .marketing-spider-fold-back {
+  opacity: 0.15;
+}
+
+/* ─── Marko-style Interactive Spider & Cobweb System ─── */
+
+/* Theme tokens — synced to portfolio light/dark */
+html:not([data-marketing-theme="dark"]) {
+  --hw-silk: oklch(45% 0.01 262 / 0.3);
+  --hw-thread: oklch(45% 0.01 262 / 0.5);
+  --hw-body: oklch(20% 0.01 262);
+  --hw-rim: oklch(20% 0.01 262);
+  --hw-leg: oklch(20% 0.01 262);
+  --hw-eye: oklch(68% 0.21 35);
+}
+
+html[data-marketing-theme="dark"] {
+  --hw-silk: oklch(85% 0.01 262 / 0.25);
+  --hw-thread: oklch(85% 0.01 262 / 0.4);
+  --hw-body: oklch(85% 0.01 262);
+  --hw-rim: oklch(65% 0.01 262);
+  --hw-leg: oklch(65% 0.01 262);
+  --hw-eye: oklch(68% 0.21 35);
+}
+
+/* Corner cobwebs */
+.hw-web {
+  position: fixed;
+  z-index: 40;
+  width: var(--hw-size);
+  height: var(--hw-size);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hw-web--main {
+  --hw-size: 280px;
+  top: 0;
+  right: 0;
+}
+
+.hw-web--small {
+  --hw-size: 150px;
+  opacity: 0.6;
+  bottom: 0;
+  left: 0;
+  rotate: 180deg;
+}
+
+.hw-web path {
+  fill: none;
+  stroke: var(--hw-silk);
+  stroke-width: 0.45px;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1px;
+  animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards hw-draw;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes hw-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Spider rig */
+.hw-rig {
+  position: fixed;
+  top: 0;
+  right: max(16px, 50vw - 689px);
+  z-index: 50;
+  width: 88px;
+  transform-origin: 50% 0;
+  pointer-events: none;
+  animation: 3.2s ease-in-out infinite alternate hw-sway;
+}
+
+@keyframes hw-sway {
+  0% { rotate: -2.5deg; }
+  to { rotate: 2.5deg; }
+}
+
+.hw-thread {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--hw-thread);
+}
+
+.hw-spider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 88px;
+  height: 88px;
+  pointer-events: auto;
+  cursor: pointer;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.hw-spider:focus-visible {
+  outline: 2px solid var(--hw-eye);
+  outline-offset: 2px;
+  border-radius: 9999px;
+}
+
+.hw-spider .body {
+  fill: var(--hw-body);
+  stroke: var(--hw-rim);
+  stroke-width: 1px;
+}
+
+.hw-spider .legs path {
+  fill: none;
+  stroke: var(--hw-leg);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hw-spider .eye {
+  fill: var(--hw-eye);
+}
+
+.hw-spider .legs g {
+  transform-box: view-box;
+  transform-origin: 32px 36px;
+}
+
+.hw-rig.is-moving .legs g:first-child {
+  animation: 0.18s ease-in-out infinite alternate hw-crawl;
+}
+
+.hw-rig.is-moving .legs g:last-child {
+  animation: 0.18s ease-in-out infinite alternate-reverse hw-crawl;
+}
+
+@keyframes hw-crawl {
+  0% { rotate: -7deg; }
+  to { rotate: 7deg; }
+}
+
+/* Scared-away toast */
+.hw-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  z-index: 70;
+  translate: -50%;
+  color: oklch(97% 0 0);
+  background: oklch(18% 0.01 262);
+  border: 1px solid oklch(30% 0.02 262);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  box-shadow: 0 12px 36px rgb(0 0 0 / 0.35);
+  animation: 3s cubic-bezier(0.22, 1, 0.36, 1) forwards hw-toast;
+}
+
+@keyframes hw-toast {
+  0% { opacity: 0; translate: -50% 12px; }
+  10%, 85% { opacity: 1; translate: -50% 0; }
+  to { opacity: 0; translate: -50% 0; }
+}
+
+/* Crowd wordmark font */
+.crowd-wordmark {
+  font-family: "Outfit", "Plus Jakarta Sans", var(--font-display), sans-serif;
+  font-weight: 900;
+}
+
+@media (width <= 767px) {
+  .hw-web--main { --hw-size: 140px; }
+  .hw-web--small { --hw-size: 90px; }
+  .hw-rig { right: 6px; scale: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-web path { stroke-dashoffset: 0; animation: none; }
+  .hw-rig { animation: none; }
+}
 
 

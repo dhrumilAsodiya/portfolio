@@ -1,0 +1,6 @@
+{
+  "name": "See You Around — Crowd Scene",
+  "description": "Interactive 4-layer monochrome illustrated pedestrian crowd component with a still standing center portrait.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

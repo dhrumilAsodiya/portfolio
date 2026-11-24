@@ -2,17 +2,20 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { ChatWidget } from './components/ChatWidget';
 import { ContactModal } from './components/ContactModal';
+import { CrowdFinale } from './components/CrowdFinale';
 import { DownloadsSection } from './components/DownloadsSection';
 import { FaqSection } from './components/FaqSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { Footers } from './components/Footers';
 import { HeroSection } from './components/HeroSection';
+import { MarkoSpider } from './components/MarkoSpider';
 import { Navbar } from './components/Navbar';
 import { OSFold } from './components/os/OSFold';
 import { OSTransitionOverlay } from './components/os/OSTransitionOverlay';
 import { PortalSection } from './components/PortalSection';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { SkillsSection } from './components/SkillsSection';
+import { SpiderFold } from './components/SpiderFold';
 import { ThemeFold } from './components/ThemeFold';
 import { ThemeScanline } from './components/ThemeScanline';
 import { TimelineSection } from './components/TimelineSection';
@@ -50,6 +53,8 @@ export default function App() {
   const [contactTopic, setContactTopic] = useState('General Inquiry');
   const [highlightedProjectId, setHighlightedProjectId] = useState<string | null>(null);
   const [osTransitioning, setOsTransitioning] = useState(false);
+  const [spiderActive, setSpiderActive] = useState(false);
+  const [spiderKey, setSpiderKey] = useState(0);
 
   const cleanupTimerRef = useRef<number | null>(null);
   const activeTransitionRef = useRef<{ skipTransition?: () => void } | null>(null);
@@ -199,6 +204,16 @@ export default function App() {
     setContactOpen(true);
   }, []);
 
+  const toggleSpider = useCallback(() => {
+    setSpiderActive((prev) => {
+      if (!prev) {
+        // Respawn fresh each time we activate
+        setSpiderKey((k) => k + 1);
+      }
+      return !prev;
+    });
+  }, []);
+
   useEffect(() => {
     applyThemeToRoot(theme);
   }, [theme]);
@@ -230,10 +245,14 @@ export default function App() {
         e.preventDefault();
         triggerBootToOS();
       }
+      if (e.key === 's' || e.key === 'S') {
+        e.preventDefault();
+        toggleSpider();
+      }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [route, contactOpen, toggleTheme, triggerBootToOS]);
+  }, [route, contactOpen, toggleTheme, triggerBootToOS, toggleSpider]);
 
   if (route === '/os') {
     return <OSPage onExitToPortfolio={() => navigate('/')} />;
@@ -268,11 +287,23 @@ export default function App() {
             <TimelineSection />
             <FaqSection />
             <PortalSection onOpenContact={openContact} />
+            <CrowdFinale />
             <Footers theme={theme} onOpenContact={openContact} />
           </div>
 
           {/* Bottom-right Page Fold Trinity OS Trigger */}
           <OSFold onBootOS={triggerBootToOS} />
+
+          {/* Bottom-left Spider Fold (Easter Egg) */}
+          <SpiderFold onToggle={toggleSpider} isActive={spiderActive} />
+
+          {/* Spider Easter Egg — toggled by S key or SpiderFold button */}
+          {spiderActive && (
+            <MarkoSpider
+              instanceKey={spiderKey}
+              onGone={() => setSpiderActive(false)}
+            />
+          )}
 
           {/* Framer Motion glitched scanline transition overlay to /os */}
           {osTransitioning && <OSTransitionOverlay onComplete={handleOSTransitionComplete} />}
