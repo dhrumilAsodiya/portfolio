@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { ChatWidget } from './components/ChatWidget';
 import { ContactModal } from './components/ContactModal';
-import { CrowdFinale } from './components/CrowdFinale';
 import { DownloadsSection } from './components/DownloadsSection';
 import { FaqSection } from './components/FaqSection';
 import { FeaturesSection } from './components/FeaturesSection';
@@ -287,7 +286,6 @@ export default function App() {
             <TimelineSection />
             <FaqSection />
             <PortalSection onOpenContact={openContact} />
-            <CrowdFinale />
             <Footers theme={theme} onOpenContact={openContact} />
           </div>
 

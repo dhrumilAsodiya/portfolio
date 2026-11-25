@@ -13,10 +13,10 @@ export function SpiderFold({ onToggle, isActive }: SpiderFoldProps) {
       className="marketing-spider-fold core-button"
     >
       <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" className="marketing-spider-fold-back">
-        <path d="M12 0H0v12L12 0z" />
+        <path d="M0 0v12h12L0 0z" />
       </svg>
       <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" className="marketing-spider-fold-front">
-        <path d="M12 0H0v12L12 0z" />
+        <path d="M0 0v12h12L0 0z" />
       </svg>
     </button>
   );

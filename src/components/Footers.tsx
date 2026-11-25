@@ -1,3 +1,4 @@
+import footerWebp from '@/src/assets/core/footer.webp';
 import coreAgentBadgeSvg from '@/src/assets/core/core-agent-badge.svg';
 import nousBadgeFilledSvg from '@/src/assets/core/nous-badge-filled.svg';
 import nousBadgeOutlineSvg from '@/src/assets/core/nous-badge-outline.svg';
@@ -121,7 +122,23 @@ export function Footers({ theme, onOpenContact }: FootersProps) {
 
       {/* Primary Dark/Cobalt Portfolio Directory Footer */}
       <footer className="hw-footer-soften bg-core text-[var(--hw-fg)] md:flex md:min-h-dvh md:flex-col md:pb-[var(--hw-frame)]">
-
+        <div className="relative isolate h-[70dvh] max-h-[890px] min-h-[420px] overflow-hidden bg-inherit md:aspect-[1310/890] md:h-auto md:max-h-none md:min-h-0 md:flex-auto">
+          <div className="hw-noise absolute inset-0">
+            <img alt="" className="absolute inset-0 size-full object-cover object-top" loading="lazy" src={footerWebp} />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-[linear-gradient(to_bottom,transparent,var(--core-primary)_86%)]"
+          />
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 translate-y-[18%]">
+            <p
+              className="mx-auto w-full max-w-[calc(var(--hw-teams-col)+2*var(--hw-teams-pad-x))] px-[var(--hw-teams-pad-x)] hw-teams-ghost-white hw-teams-gothic text-center font-normal uppercase"
+              style={{ fontSize: 'clamp(56px, 17vw, 280px)', lineHeight: 0.9 }}
+            >
+              {PORTFOLIO_PROFILE.fullName}
+            </p>
+          </div>
+        </div>
 
         {/* Footer 4-Column Link Directory */}
         <div className="relative mx-auto grid w-full max-w-[calc(var(--hw-teams-col)+2*var(--hw-teams-pad-x))] grid-cols-2 gap-x-6 gap-y-10 px-[var(--hw-teams-pad-x)] pb-10 font-[family-name:var(--font-mono)] text-[length:var(--hw-teams-label-sm)] leading-none tracking-normal uppercase md:grid-cols-[minmax(0,320px)_repeat(4,minmax(0,1fr))] md:gap-5">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import globeSvg from '@/src/assets/core/globe.svg';
-import portalArtSvg from '@/src/assets/core/portal-art.svg';
 import { PORTFOLIO_PROFILE } from '@/src/data/siteData';
+import { CrowdFinale } from './CrowdFinale';
 
 interface PortalSectionProps {
   onOpenContact: (topic?: string) => void;
@@ -102,13 +102,9 @@ export function PortalSection({ onOpenContact }: PortalSectionProps) {
           {PORTFOLIO_PROFILE.bioShort}
         </p>
 
-        {/* Blue Artwork Plate */}
+        {/* Crowd Finale Component */}
         <div className="landing-portal-art">
-          <figure className="hw-teams-plate bg-core relative h-[var(--hw-teams-plate-h)] w-full overflow-clip rounded-t-md">
-            <div className="hw-noise absolute inset-0">
-              <img alt="" className="hw-parallax absolute inset-0 size-full object-cover" loading="lazy" src={portalArtSvg} />
-            </div>
-          </figure>
+          <CrowdFinale />
         </div>
       </div>
     </section>
