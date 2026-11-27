@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import cloudSvg from '@/src/assets/core/cloud.svg';
 import heroWebp from '@/src/assets/core/hero.webp';
-import { QUICK_TABS, QuickTabKey, WORK_QUICK_JUMP } from '@/src/data/siteData';
+import { PORTFOLIO_PROFILE, QUICK_TABS, QuickTabKey, WORK_QUICK_JUMP } from '@/src/data/siteData';
 import { CheckPixelIcon, ChevronDownIcon, CopyIcon } from './Icons';
 
 const TAB_KEYS: QuickTabKey[] = ['bio', 'stack', 'contact'];
@@ -62,6 +62,9 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
               letterSpacing: '-0.02em',
             }}
           >
+            <span className="sr-only">
+              {PORTFOLIO_PROFILE.fullName} — {PORTFOLIO_PROFILE.role}:{' '}
+            </span>
             <span>Systems</span>
             <span>Built to</span>
             <span>Think &amp; Scale</span>

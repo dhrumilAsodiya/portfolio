@@ -16,9 +16,9 @@ interface FootersProps {
 
 export function Footers({ theme, onOpenContact }: FootersProps) {
   return (
-    <>
+    <footer>
       {/* Paper Footer with Ghost Watermark & Ceremonial Badges */}
-      <footer className="bg-core-paper text-[var(--hw-teams-ink)]">
+      <div className="bg-core-paper text-[var(--hw-teams-ink)]">
         <div className="mx-auto grid w-full max-w-[calc(var(--hw-teams-col)+2*var(--hw-teams-pad-x))] px-[var(--hw-teams-pad-x)] *:col-start-1 *:row-start-1">
           <p
             aria-hidden="true"
@@ -118,10 +118,10 @@ export function Footers({ theme, onOpenContact }: FootersProps) {
             </div>
           </div>
         </div>
-      </footer>
+      </div>
 
       {/* Primary Dark/Cobalt Portfolio Directory Footer */}
-      <footer className="hw-footer-soften bg-core text-[var(--hw-fg)] md:flex md:min-h-dvh md:flex-col md:pb-[var(--hw-frame)]">
+      <div className="hw-footer-soften bg-core text-[var(--hw-fg)] md:flex md:min-h-dvh md:flex-col md:pb-[var(--hw-frame)]">
         <div className="relative isolate h-[70dvh] max-h-[890px] min-h-[420px] overflow-hidden bg-inherit md:aspect-[1310/890] md:h-auto md:max-h-none md:min-h-0 md:flex-auto">
           <div className="hw-noise absolute inset-0">
             <img alt="" className="absolute inset-0 size-full object-cover object-top" loading="lazy" src={footerWebp} />
@@ -242,8 +242,8 @@ export function Footers({ theme, onOpenContact }: FootersProps) {
             </span>
           </p>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }
 

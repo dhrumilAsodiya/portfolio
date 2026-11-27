@@ -35,6 +35,8 @@ export function DownloadsSection() {
             <img
               src={desktopPreviewWebp}
               alt="Developer Workbench interface showing code editor, interactive terminal, and system telemetry"
+              width={1376}
+              height={768}
               className="landing-desktop-video transition-transform duration-300 ease-out group-hover:scale-[1.006]"
             />
           </button>
@@ -229,6 +231,8 @@ export function DownloadsSection() {
             <img
               src={desktopPreviewWebp}
               alt="Featured Full-Stack Developer Workbench preview expanded"
+              width={1376}
+              height={768}
               className="max-h-[85vh] w-full object-contain"
             />
           </div>

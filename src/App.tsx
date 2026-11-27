@@ -255,9 +255,10 @@ export default function App() {
           {/* Top-right Page Fold Theme Switcher */}
           <ThemeFold theme={theme} onToggle={toggleTheme} />
 
-          <div id="hpv2-main" role="main" tabIndex={-1}>
-            <span aria-hidden="true" id="top" />
-            <Navbar onOpenContact={openContact} />
+          <span aria-hidden="true" id="top" />
+          <Navbar onOpenContact={openContact} />
+
+          <main id="hpv2-main" tabIndex={-1}>
             <HeroSection onOpenContact={openContact} />
             <DownloadsSection />
             <FeaturesSection
@@ -268,8 +269,9 @@ export default function App() {
             <TimelineSection />
             <FaqSection />
             <PortalSection onOpenContact={openContact} />
-            <Footers theme={theme} onOpenContact={openContact} />
-          </div>
+          </main>
+
+          <Footers theme={theme} onOpenContact={openContact} />
 
           {/* Bottom-right Page Fold Trinity OS Trigger */}
           <OSFold onBootOS={triggerBootToOS} />

@@ -195,7 +195,7 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
                       >
                         <div className="hw-noise absolute inset-0">
                           <img
-                            alt={`${project.title} visual showcase`}
+                            alt={`${project.title} (${project.category}, ${project.year}) — ${project.stack.slice(0, 3).join(', ')} showcase`}
                             className="hw-parallax absolute inset-0 size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
                             loading="lazy"
                             src={project.image}
@@ -320,7 +320,7 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
                     <figure className="hw-teams-plate bg-core relative h-[var(--hw-teams-plate-h)] w-full overflow-clip rounded-t-md">
                       <div className="hw-noise absolute inset-0">
                         <img
-                          alt={`${project.title} artwork`}
+                          alt={`${project.title} — ${project.kicker} architecture preview`}
                           className="hw-parallax absolute inset-0 size-full object-cover"
                           loading="lazy"
                           src={project.image}
@@ -356,7 +356,7 @@ export function FeaturesSection({ onOpenContact, highlightedProjectId }: Feature
               <div className="hw-noise absolute inset-0">
                 <img
                   src={activeProject.image}
-                  alt={activeProject.title}
+                  alt={`${activeProject.title} (${activeProject.category}) — built with ${activeProject.stack.join(', ')}`}
                   className="size-full object-cover"
                 />
               </div>
