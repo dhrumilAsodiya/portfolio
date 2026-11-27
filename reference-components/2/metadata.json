@@ -1,0 +1,6 @@
+{
+  "name": "Ollivere Interactive Showcase",
+  "description": "Faithful interactive recreation of the T-Rex text-bite hero, graffiti skills freight train, and peeking wagging-tongue T-Rex CTA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
